@@ -1,0 +1,95 @@
+(ns debu.core)
+
+;; String that contains the possible problems a user may be facing, giving them a possiblity to 
+(def problems "infinite_loop, private_class, no_output, loop_executes_wrong_amount, 
+  illegal_operation, some_incorrect_results, no_incorrect_results, incomplete_results, data_modified, 
+  ending_abruptly, data_not_changed, public_data")
+
+
+;; A database that is presented contain a list of possible errors 
+(def database {
+   :infinite_loop "You might miss a return statement, Loop is missing an ending",
+   :private_class "Class may be set to private instead of public, private class can only be found in the location that it is set to, try using a public class for every place that is set to public",
+   :no_output "print method may be missing, a 'main' function may be missing, class may not be giving a return statement",
+   :loop_executes_wrong_amount "may not be executing at all, array refrenced at location 1 rather than location 0, loop structured may be incorrectly nested",
+   :illegal_operation "a division by 0 is not possible, the operations are not compatible with each other, too many operations have been stacked within each other giving a value that makes the statement false",
+   :some_incorrect_results "conditions may produce a bad value, possible errors in your scope, order of operations may be incorrect",
+   :no_correct_results "incorrect opperation may be present, incorrect indexing, missing return statement, scope errors",
+   :incomplete_results "error in indexing, loop ended to quickly",
+   :data_modified "error in your scope, your pointer might be wrong",
+   :ending_abruptly "conditionals may be missing, your UI might be mishandled, memory may be mismanaged",
+   :data_changed_incorrectly "static or final type, error in your scope, your pointer might be wrong, erorr in index",
+   :public_data "public class used instead of private"})
+
+;; If implemeted with a UI this can be the location where the user would input what type of problem they are facing.
+(print "Enter a problem category from the following list")
+(print " ")
+(print problems)
+
+
+;; Each of these will produce a result when taken with a UI that will point you to the proper direction.
+;; This will get the error that is assosicated with infinite loops.
+(defn inf_loop [database]
+  (if problems == "infinite_loop")
+  (print (get database :infinite_loop)) ;;Gets the problem that corresponds with the database that will print it out.
+)
+
+;;This will get the error that is associated with private classes
+(defn pri_class [database]
+  (if problems == "private_class")
+  (print (get database :private_class))
+)
+
+;;This will give the error that is associated with no output.
+(defn no_out [database]
+  (if problems == "no_output")
+  (print (get database :no_output))
+)
+
+;;This will give the error that is associated loops that are not properly executed.
+(defn loop_ex [database]
+  (if problems == "loop_executes_wrong_amount")
+  (print (get database :loop_executes_wrong_amount))
+)
+
+;;This will give the error that is associated with an illegal operation.
+(defn illegal [database]
+  (if problems == "illegal_operation")
+  (print (get database :illegal_operation))
+)
+
+;;This will give the error that is associated with a part of results that are partly wrong.
+(defn some_incorrect [database]
+  (if problems == "some_incorrect_results")
+  (print (get database :some_incorrect_results))
+)
+
+;;This will give the error that is associated with all incorrect outputs. 
+(defn all_incorrect [database]
+  (if problems == "no_correct_results")
+  (print (get database :no_correct_results))
+)
+
+;;This will give the error that is associated with incomplete results.
+(defn incomplete [database]
+  (if problems == "incomplete_results")
+  (print (get database :incomplete_results))
+)
+
+;;This will give the error that is associated with the program ending abruptly.
+(defn end_quick [database]
+  (if problems == "ending_abruptly")
+  (print (get database :ending_abruptly))
+)
+
+;;This will give the error that is associated with the data that is modified without your permission.
+(defn change [database]
+  (if problems == "data_changed_incorrectly")
+  (print (get database :data_changed_incorrectly))
+)
+
+;;This will give the error that is associated with a having a public class when needed to make it private
+(defn pub [database]
+  (if problems == "public_data")
+  (print (get database :public_data))
+)
