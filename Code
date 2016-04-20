@@ -1,5 +1,5 @@
 (ns debu.core)
-
+;;Eric Castillo
 ;; String that contains the possible problems a user may be facing, giving them a possiblity to 
 (def problems "infinite_loop, private_class, no_output, loop_executes_wrong_amount, 
   illegal_operation, some_incorrect_results, no_incorrect_results, incomplete_results, data_modified, 
